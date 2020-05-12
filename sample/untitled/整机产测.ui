@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="wholeproduce">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>10</y>
+      <width>131</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial Black</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>整机产测</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="formLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>311</width>
+      <height>411</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="dev_type_lable">
+       <property name="text">
+        <string>设备类型</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="dev_type_lineEdit"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="oem_lable">
+       <property name="text">
+        <string>oem</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="oem_comboBox">
+       <item>
+        <property name="text">
+         <string>fiberhome</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>other</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>unset</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="local_ip_lable">
+       <property name="text">
+        <string>本机IP</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="local_ip_lineEdit"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="dev_ip">
+       <property name="text">
+        <string>主控ip</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="dev_ip_lineEdit"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="mssh_port_lable">
+       <property name="text">
+        <string>主控ssh端口</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="mssh_port_lineEdit"/>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="mssh_password_lable">
+       <property name="text">
+        <string>主控ssh一级密码</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLineEdit" name="mssh_password_lineEdit"/>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="mssh_password_lable_2">
+       <property name="text">
+        <string>主控ssh二级密码</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QLineEdit" name="ssh_password_lineEdit_2"/>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="mcb_version_lable">
+       <property name="text">
+        <string>主控版本</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QLineEdit" name="mcb_version_lineEdit"/>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="upper_limit_lable">
+       <property name="text">
+        <string>温度上限</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="QSpinBox" name="upper_limit_spinBox">
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="lower_limit">
+       <property name="text">
+        <string>温度下限</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QSpinBox" name="lower_limit_spinBox"/>
+     </item>
+     <item row="10" column="0">
+      <widget class="QLabel" name="rssi_lower_limit_lable">
+       <property name="text">
+        <string>WiFi信号强度上限</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="1">
+      <widget class="QLineEdit" name="rssi_lower_limit_lineEdit"/>
+     </item>
+     <item row="11" column="0">
+      <widget class="QLabel" name="rssi_lower_limit_lable_2">
+       <property name="text">
+        <string>WiFi信号强度下限</string>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="1">
+      <widget class="QLineEdit" name="wifi_rssi_down_lineEdit"/>
+     </item>
+     <item row="12" column="0">
+      <widget class="QLabel" name="power_warn_time_lable">
+       <property name="text">
+        <string>掉电告警等待时间</string>
+       </property>
+      </widget>
+     </item>
+     <item row="12" column="1">
+      <widget class="QSpinBox" name="power_warn_time_spinBox">
+       <property name="maximum">
+        <number>3600</number>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="formLayoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>70</y>
+      <width>291</width>
+      <height>100</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout_2">
+     <item row="0" column="0">
+      <widget class="QLabel" name="nchp_gsm_version_lable">
+       <property name="text">
+        <string>gsm信道板版本</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="nchp_gsm_version_lineEdit"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="nchp_lte_version_lable">
+       <property name="text">
+        <string>lte信道板版本</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="nchp_lte_version_lineEdit"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="count_lower_limit_lable">
+       <property name="text">
+        <string>上号数量下限</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QSpinBox" name="count_lower_limit_spinBox"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="plat_name_lable">
+       <property name="text">
+        <string>设备型号</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QComboBox" name="plat_name_comboBox"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="whole_produce_start">
+    <property name="geometry">
+     <rect>
+      <x>484</x>
+      <y>500</y>
+      <width>131</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>start</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

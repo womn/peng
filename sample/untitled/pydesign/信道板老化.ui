@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>535</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="oldproduce_lable">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>20</y>
+      <width>101</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Arial Black</family>
+      <pointsize>12</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="text">
+     <string>信道板老化</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="formLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>80</y>
+      <width>381</width>
+      <height>351</height>
+     </rect>
+    </property>
+    <layout class="QFormLayout" name="formLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="dev_ip_lable">
+       <property name="text">
+        <string>主控IP</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="dut_ip_lineEdit"/>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="mssh_port_lable">
+       <property name="text">
+        <string>主控ssh端口</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="mssh_port_lineEdit"/>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="mssh_user_lable">
+       <property name="text">
+        <string>主控ssh用户</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="mssh_user_lineEdit"/>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="mssh_password_lable">
+       <property name="text">
+        <string>主控ssh一级密码</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="mssh_password_lineEdit"/>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="mssh_password_lable_2">
+       <property name="text">
+        <string>主控ssh二级密码</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLineEdit" name="mssh_password_lineEdit_2"/>
+     </item>
+     <item row="5" column="1">
+      <widget class="QLineEdit" name="nssh_user_lineEdit"/>
+     </item>
+     <item row="5" column="0">
+      <widget class="QLabel" name="nssh_user_lable">
+       <property name="text">
+        <string>信道板ssh用户</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="nssh_password_lable">
+       <property name="text">
+        <string>信道板ssh密码</string>
+       </property>
+      </widget>
+     </item>
+     <item row="6" column="1">
+      <widget class="QLineEdit" name="nssh_user_lineEdit_2"/>
+     </item>
+     <item row="7" column="0">
+      <widget class="QLabel" name="led_pin_lable">
+       <property name="text">
+        <string>led灯引脚</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="1">
+      <widget class="QLineEdit" name="led_pin_lineEdit"/>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="upper_limit_lable">
+       <property name="text">
+        <string>温度上限</string>
+       </property>
+      </widget>
+     </item>
+     <item row="8" column="1">
+      <widget class="QSpinBox" name="upper_limit_spinBox">
+       <property name="minimum">
+        <number>1</number>
+       </property>
+       <property name="maximum">
+        <number>100</number>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="0">
+      <widget class="QLabel" name="lower_limit_lable">
+       <property name="text">
+        <string>温度下限</string>
+       </property>
+      </widget>
+     </item>
+     <item row="9" column="1">
+      <widget class="QSpinBox" name="lower_limit_spinBox"/>
+     </item>
+     <item row="10" column="0">
+      <widget class="QLabel" name="log_level_lable">
+       <property name="text">
+        <string>日志等级</string>
+       </property>
+      </widget>
+     </item>
+     <item row="10" column="1">
+      <widget class="QSpinBox" name="log_level_spinBox">
+       <property name="maximum">
+        <number>7</number>
+       </property>
+       <property name="value">
+        <number>7</number>
+       </property>
+      </widget>
+     </item>
+     <item row="11" column="0">
+      <widget class="QCheckBox" name="save_log_checkBox">
+       <property name="text">
+        <string>保存文件log</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QPushButton" name="oldnchp_start">
+    <property name="geometry">
+     <rect>
+      <x>544</x>
+      <y>450</y>
+      <width>121</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>start</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>23</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

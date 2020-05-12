@@ -1,0 +1,103 @@
+1、安装pyqt5库： pip install pyqt5
+2、vscode 开发pyqt5出现大量的报错或者警告，但是程序能运行。在setting中设置增加下main几行
+"python.linting.pylintArgs": [
+        "--extension-pkg-whitelist=PyQt5",
+        "--disable=no-name-in-module","--disable=import-error",
+        "--disable=unused-import","--disable=unused-argument","--disable=missing-docstring",
+        "--disable=unused-variable","--disable=wrong-import-order","--disable=ungrouped-imports",
+        "--load-plugins",
+    ]
+
+3、ModuleNotFoundError: No module named 'PyQt5.QtWebEngineWidgets'
+	需要安装库 pip install qtwebengine
+	
+4、将pyqt5打包成exe:安装 pip install pyinstaller
+带后台：pyinstaller -F test.py
+不带后台：pyinstaller -F hello.py --noconsole
+
+
+
+
+5、新需求：
+	1. 给生产人员一个操作界面，可以选择型号，设备类型，oem，有入口可以上传软件版本，上传以后就可以界面选择此次生产的软件版本。
+	2. 软件使用一套代码，各设备不同的配置和测试要求通过配置文件来设置
+	3.新的型号，生产的配置文件编辑好以后，由生产任务单指定，并由生产人员导入操作界面
+
+思路：
+测试项目：信道板产测、信道板老化、整机产测、mx2080整机产测、整机功率校准 （下拉框选择）
+选择型号：（下拉框选择）
+选择设备类型：（下拉框选择）
+选择oem：（下拉框选择）
+上传软件版本：上传软件版本（上传按钮）  版本选择（下拉框选择）
+测试任务：多个选择（打勾选择的形式）
+导入配置文件
+电脑IP
+
+
+环境是否也可以在界面上操作。
+
+
+
+6、需要优化的地方
+log打印的时候，是否打印可以在界面选择
+
+7、问题：
+   重启pcl为啥要kill两次和启动两次
+   升级辅CPU版本跟主控版本有何关系
+   掉电告警咋测的，检测11引脚。。。。。
+   整机产测，factory检查，sx2560-l2 需要检测gsm吗
+   mx2080 信道板版本检测和制式检测有重复项
+   mx2080 版本检测和主控主备检查是否有重复
+   
+   
+零碎想法：
+	1、应该有导入配置文件的功能。即使是说把相同部分在界面选择操作，但是对于一些特殊的选择需要通过配置文件来更改
+	2、
+	
+	
+	
+pycharm designer 报错：https://blog.csdn.net/qq_41767945/article/details/102504642
+
+
+安装 pip install PyQtWebEngine  
+安装 pip install pandas
+pip install matplotlib
+
+
+信道板产测、信道板老化、整机产测、mx2080整机产测、整机功率校准
+
+
+
+1、更改服务器地址为公网地址
+2、网络模式改为3g拨号模式
+3、关电插sim卡，开电
+4、用tcpdump抓包（抓包命令可以百度），协议对比pcl协议查看；
+
+
+
+
+
+
+
+
+曹启航  
+	条目：设备、告警、重点人员库管理、操作日志统计、用户日志统计
+	用例：
+杨武东
+	条目：热点设备详情、任务管理、案件管理
+	用例：
+张顺
+	条目：首页、系统
+	用例：首页、系统、布控
+薛二栋
+	条目：WIFI设备详情、警务人员管理、模板配置、网关配置
+	用例：警务人员管理、模板配置、网关配置
+林总
+	条目：元数据库、档案库
+	用例：
+彭亿
+	条目：数据分析、人流量统计、常驻人口统计、场景统计、设备采集去重量统计、常采人口统计
+	用例：
+
+
+
