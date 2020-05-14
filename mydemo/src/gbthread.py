@@ -12,7 +12,6 @@ class gbthread(threading.Thread):
     def __init__(self, cfg, logger, language, fh, col, mac, path):
         threading.Thread.__init__(self)
 
-        self.__cfg = cfg
         self.__logger = logger
         self.__zh_cn = language
         self.__fh = fh

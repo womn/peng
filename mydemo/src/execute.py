@@ -6,7 +6,7 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
 import configparser 
-import gbthread, setcolor, translation
+#import gbthread, setcolor, translation
 
 def LoggerInit(file_name):
 
@@ -33,7 +33,9 @@ def LoggerInit(file_name):
     return fh, logger
 
 def dpowrun(self,mainwindow):
-    QMessageBox.about(mainwindow, "整机功率校准", "生产开始啦")
+    QMessageBox.about(mainwindow, "整机功率校准", self.dev_mac_lineEdit.text())
+    
+    '''
     file_name = "-log.txt"
     log_file = mac + file_name
     fh, logger = LoggerInit(log_file)
@@ -43,7 +45,7 @@ def dpowrun(self,mainwindow):
 
     logger.info(log_file)
     path = os.getcwd() + "\\file"
-    
-    work_thread = gbthread(cfg, logger, zh_cn, fh, col, mac, path)
+    mac = self.dev_mac_lineEdit
+    work_thread = gbthread(logger, zh_cn, fh, col, mac, path)
     work_thread.start()
-
+'''

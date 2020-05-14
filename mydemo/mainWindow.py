@@ -11,7 +11,7 @@ from PyQt5.QtGui import *
 
 import configparser
 
-from src import execute
+from src import execute 
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -84,32 +84,33 @@ class Ui_MainWindow(object):
 
         if dialog.exec():
             filenames = dialog.selectedFiles()
-            cfg = configparser.ConfigParser()
+            self.__cfg = configparser.ConfigParser()
             
-            cfg.read(filenames[0], encoding='UTF-8')
-            yield_type = cfg.sections()
+            self.__cfg.read(filenames[0], encoding='UTF-8')
+            yield_type = self.__cfg.sections()
             if yield_type[0] != "yield_type":
                 QMessageBox.about(self.__mainwindow, "错误", "缺少生产类型")
                 return
             else:
-                num = int(cfg.get("yield_type","type"))
+                num = int(self.__cfg.get("yield_type","type"))
             #信道板产测
             if num == 0:
                 self.shownchpproduce()
-                #self.plat_name_comboBox.setCurrentText(cfg.get("plat","plat_name"))
-                self.local_ip_lineEdit.setText(cfg.get("dut","local_ip"))
-                self.dev_ip_lineEdit.setText(cfg.get("dut", "dev_ip"))
-                self.sa_ip_lineEdit.setText(cfg.get("dut","sa_ip"))
+                '''
+                #self.plat_name_comboBox.setCurrentText(self.cfg.get("plat","plat_name"))
+                self.local_ip_lineEdit.setText(self.cfg.get("dut","local_ip"))
+                self.dev_ip_lineEdit.setText(self.cfg.get("dut", "dev_ip"))
+                self.sa_ip_lineEdit.setText(self.cfg.get("dut","sa_ip"))
                 #self.double_nchp_checkBox.styleSheet(cfg.get("dut","nchp_num"))
-                self.nchp_ip_lineEdit.setText(cfg.get("dut","nchp_ip"))
-                self.mssh_port_lineEdit.setText(cfg.get("dut","ssh_port"))
-                self.mssh_user_lineEdit.setText(cfg.get("dut","username"))
-                self.mssh_password_lineEdit.setText(cfg.get("dut","password"))
-                self.mssh_password_lineEdit_2.setText(cfg.get("dut","password2"))
-                self.nssh_port_lineEdit.setText(cfg.get("nchp","ssh_port"))
-                self.nssh_user_lineEdit.setText(cfg.get("nchp","username"))
-                self.nssh_password_lineEdit.setText(cfg.get("nchp","password"))
-                
+                self.nchp_ip_lineEdit.setText(self.cfg.get("dut","nchp_ip"))
+                self.mssh_port_lineEdit.setText(self.cfg.get("dut","ssh_port"))
+                self.mssh_user_lineEdit.setText(self.cfg.get("dut","username"))
+                self.mssh_password_lineEdit.setText(self.cfg.get("dut","password"))
+                self.mssh_password_lineEdit_2.setText(self.cfg.get("dut","password2"))
+                self.nssh_port_lineEdit.setText(self.cfg.get("nchp","ssh_port"))
+                self.nssh_user_lineEdit.setText(self.cfg.get("nchp","username"))
+                self.nssh_password_lineEdit.setText(self.cfg.get("nchp","password"))
+                '''
             #信道板老化
             elif num == 1:
                 self.showoldproduce()
@@ -122,8 +123,17 @@ class Ui_MainWindow(object):
             #整机功率校准
             elif num == 4:
                 self.showdpow()
+                #界面填写
+                self.local_ip_lineEdit.setText(self.__cfg.get("dut","local_ip"))
+                self.dev_ip_lineEdit.setText(self.__cfg.get("dut", "dev_ip"))
+                self.sa_ip_lineEdit.setText(self.__cfg.get("dut","sa_ip"))
+                self.mssh_port_lineEdit.setText(self.__cfg.get("dut","ssh_port"))
+                self.mssh_user_lineEdit.setText(self.__cfg.get("dut","username"))
+                self.mssh_password_lineEdit.setText(self.__cfg.get("dut","password"))
+                self.mssh_password_lineEdit_2.setText(self.__cfg.get("dut","password2"))
+                self.external_gain_lineEdit.setText(self.__cfg.get("common","external_gain"))
             else:
-                QMessageBox.about(self.__mainwindow, "错误", "生产类型不正确")
+                QMessageBox.about(self.__mainwindow, "错误", "生产类型错误")
                 return
     def shownchpproduce(self):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
@@ -911,9 +921,9 @@ class Ui_MainWindow(object):
         self.external_gain_label = QtWidgets.QLabel(self.formLayoutWidget)
         self.external_gain_label.setObjectName("external_gain_label")
         self.formLayout.setWidget(7, QtWidgets.QFormLayout.LabelRole, self.external_gain_label)
-        self.label_10 = QtWidgets.QLabel(self.formLayoutWidget)
-        self.label_10.setObjectName("label_10")
-        self.formLayout.setWidget(8, QtWidgets.QFormLayout.LabelRole, self.label_10)
+        self.dev_mac_lable = QtWidgets.QLabel(self.formLayoutWidget)
+        self.dev_mac_lable.setObjectName("dev_mac_lable")
+        self.formLayout.setWidget(8, QtWidgets.QFormLayout.LabelRole, self.dev_mac_lable)
         self.mssh_user_lineEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
         self.mssh_user_lineEdit.setObjectName("mssh_user_lineEdit")
         self.formLayout.setWidget(4, QtWidgets.QFormLayout.FieldRole, self.mssh_user_lineEdit)
@@ -926,9 +936,9 @@ class Ui_MainWindow(object):
         self.external_gain_lineEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
         self.external_gain_lineEdit.setObjectName("external_gain_lineEdit")
         self.formLayout.setWidget(7, QtWidgets.QFormLayout.FieldRole, self.external_gain_lineEdit)
-        self.lineEdit_9 = QtWidgets.QLineEdit(self.formLayoutWidget)
-        self.lineEdit_9.setObjectName("lineEdit_9")
-        self.formLayout.setWidget(8, QtWidgets.QFormLayout.FieldRole, self.lineEdit_9)
+        self.dev_mac_lineEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
+        self.dev_mac_lineEdit.setObjectName("dev_mac_lineEdit")
+        self.formLayout.setWidget(8, QtWidgets.QFormLayout.FieldRole, self.dev_mac_lineEdit)
         self.dpowstart = QtWidgets.QPushButton(self.centralwidget)
         self.dpowstart.setGeometry(QtCore.QRect(494, 400, 141, 23))
         self.dpowstart.setObjectName("dpowstart")
@@ -943,7 +953,7 @@ class Ui_MainWindow(object):
         self.mssh_password_label.setText("主控登陆密码")
         self.mssh_password_label_2.setText("主控登陆密码2")
         self.external_gain_label.setText("外部衰减")
-        self.label_10.setText("载波频率")
+        self.dev_mac_lable.setText("设备mac")
         self.dpowstart.setText("start")
 
         self.dpowstart.clicked.connect(lambda : execute.dpowrun(self,MainWindow))
