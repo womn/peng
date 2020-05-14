@@ -19,7 +19,6 @@ class Menu(QMainWindow) :
 
         save = QAction("保存",self)
         save.setShortcut("Ctrl + S")
-
         file.addAction(save)
 
         save.triggered.connect(self.process)

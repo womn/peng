@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+# @Author: pengyi
+# @Time  : 20/05/14
+
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 import sys,math
@@ -7,6 +10,8 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 
 import configparser
+
+from src import execute
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -53,6 +58,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
+        self.__mainwindow = MainWindow
         MainWindow.setWindowTitle(_translate("MainWindow",  "产测助手"))
         self.menu.setTitle(_translate("MainWindow",  "文件"))
         self.menucaidan.setTitle(_translate("MainWindow",  "生产类型"))
@@ -63,7 +69,7 @@ class Ui_MainWindow(object):
         self.actionmx2080.setText(_translate("MainWindow",  "mx2080整机产测"))
         self.dpow.setText(_translate("MainWindow",  "整机功率校准"))
         
-        self.loadfile.triggered.connect(self.showloadfile)
+        self.loadfile.triggered.connect(self.oneloadfile)
         self.nchpproduce.triggered.connect(self.shownchpproduce)
         self.oldproduce.triggered.connect(self.showoldproduce)
         self.wholeproduce.triggered.connect(self.showwholeproduce)
@@ -71,7 +77,7 @@ class Ui_MainWindow(object):
         self.dpow.triggered.connect(self.showdpow)
         self.shownchpproduce()
 
-    def showloadfile(self):
+    def oneloadfile(self):
         dialog = QFileDialog()
         dialog.setFileMode(QFileDialog.AnyFile)
         dialog.setFilter(QDir.Files)
@@ -79,9 +85,14 @@ class Ui_MainWindow(object):
         if dialog.exec():
             filenames = dialog.selectedFiles()
             cfg = configparser.ConfigParser()
-            cfg.read(filenames[0], encoding='UTF-8')
             
-            num = int(cfg.get("yield_type","type"))
+            cfg.read(filenames[0], encoding='UTF-8')
+            yield_type = cfg.sections()
+            if yield_type[0] != "yield_type":
+                QMessageBox.about(self.__mainwindow, "错误", "缺少生产类型")
+                return
+            else:
+                num = int(cfg.get("yield_type","type"))
             #信道板产测
             if num == 0:
                 self.shownchpproduce()
@@ -111,6 +122,9 @@ class Ui_MainWindow(object):
             #整机功率校准
             elif num == 4:
                 self.showdpow()
+            else:
+                QMessageBox.about(self.__mainwindow, "错误", "生产类型不正确")
+                return
     def shownchpproduce(self):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
@@ -931,6 +945,9 @@ class Ui_MainWindow(object):
         self.external_gain_label.setText("外部衰减")
         self.label_10.setText("载波频率")
         self.dpowstart.setText("start")
+
+        self.dpowstart.clicked.connect(lambda : execute.dpowrun(self,MainWindow))
+
 
 
 if __name__ == '__main__':
